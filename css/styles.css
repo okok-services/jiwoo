@@ -1,0 +1,287 @@
+/*! normalize.css v7.0.0 | MIT License | github.com/necolas/normalize.css */html{line-height:1.15;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,aside,footer,header,nav,section{display:block}h1{font-size:2em;margin:.67em 0}figcaption,figure,main{display:block}figure{margin:1em 40px}hr{box-sizing:content-box;height:0;overflow:visible}pre{font-family:monospace,monospace;font-size:1em}a{background-color:transparent;-webkit-text-decoration-skip:objects}abbr[title]{border-bottom:none;text-decoration:underline;text-decoration:underline dotted}b,strong{font-weight:inherit}b,strong{font-weight:bolder}code,kbd,samp{font-family:monospace,monospace;font-size:1em}dfn{font-style:italic}mark{background-color:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}audio,video{display:inline-block}audio:not([controls]){display:none;height:0}img{border-style:none}svg:not(:root){overflow:hidden}button,input,optgroup,select,textarea{font-family:sans-serif;font-size:100%;line-height:1.15;margin:0}button,input{overflow:visible}button,select{text-transform:none}[type=reset],[type=submit],button,html [type=button]{-webkit-appearance:button}[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner,button::-moz-focus-inner{border-style:none;padding:0}[type=button]:-moz-focusring,[type=reset]:-moz-focusring,[type=submit]:-moz-focusring,button:-moz-focusring{outline:1px dotted ButtonText}fieldset{padding:.35em .75em .625em}legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal}progress{display:inline-block;vertical-align:baseline}textarea{overflow:auto}[type=checkbox],[type=radio]{box-sizing:border-box;padding:0}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}[type=search]::-webkit-search-cancel-button,[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}details,menu{display:block}summary{display:list-item}canvas{display:inline-block}template{display:none}[hidden]{display:none}/*# sourceMappingURL=normalize.min.css.map */
+/* end normalize */
+
+
+
+
+@font-face {
+   font-family: 'a-sd';
+   font-style: normal;
+   font-weight: 400;
+   src: url(fonts/apple-sd.woff) format('woff');
+}
+
+@font-face {
+   font-family: 'gta';
+   font-style: normal;
+   font-weight: 400;
+   src: url(fonts/GT-America-Expanded-Regular.woff) format('woff');
+}
+
+
+html, body {
+	margin:0;
+	padding: 0;
+}
+body {
+	overflow: hidden;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+ul, li {
+	list-style: none;
+}
+
+/*** PRELOADER ***/
+
+.preloader {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 100;
+	width: 100%;
+	height: 100%;
+	background-color: white;
+}
+.preloader img {
+	position: absolute;
+	top:50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	max-width: 150px;
+}
+
+/*** MAIN STUFF ***/
+.bg_color {
+	pointer-events: none;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100vh;
+    height: 100vh;
+    /*background: radial-gradient(red 0%, white 60%);*/
+    background: radial-gradient(rgba(255,255,255,1) 0%, rgba(255,255,255,1) 100%);
+    z-index: -1;
+}
+.bg_color_content {
+	pointer-events: none;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100vh;
+    height: 100vh;
+    /*background: radial-gradient(red 0%, white 60%);*/
+    background:  radial-gradient(rgb(255, 255, 50) 0%, rgb(255, 255, 255) 90%);
+    z-index: -1;
+    /*border-radius: 50%;*/
+}
+.menu_trigger {
+	position: fixed;
+	width: 40px;
+	height: 40px;
+	left: 10px;
+	top: 10px;
+	z-index: 6;
+	background: radial-gradient(20.00px at 50% 50%, #000000 0%, rgba(196, 196, 196, 0) 100%);
+	cursor: pointer;
+}
+.top_bar {
+	position: fixed;
+	width: 1440px;
+	height: 90px;
+	left: 0px;
+	top: 0px;
+	pointer-events: none;
+
+	background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 53.12%);
+	transform: matrix(1, 0, 0, -1, 0, 0);
+
+	z-index: 2;
+}
+.logo {
+	position: fixed;
+	width: 94px;
+	right: 20px;
+	top: 20px;
+	z-index: 5;
+	cursor: pointer;
+
+}
+/****/
+
+/*** RTL ***/
+
+.rtl {
+	float: right;
+	padding: 0px 50px;
+	margin:0;
+	width: 100%;
+	height: 100%;
+	writing-mode: vertical-rl ;
+}
+.rtl li {
+	font-family: a-sd, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+	font-size: 25px;
+	font-weight: 500;
+	letter-spacing: 3px;
+	line-height: 40px;
+	white-space: nowrap;
+	padding:30px 20px 300px;
+	display: block;
+	cursor: pointer;
+	/*cursor: pointer;*/
+}
+.rtl li img{
+	width: 100%;
+	max-width: 100px;
+	opacity: 1;
+	pointer-events: none;
+}
+.img_wrap {
+	position: relative;
+	display: inline-block;
+	margin: 20px 0;
+}
+.img_wrap canvas {
+	position: absolute;
+	top:0;
+	left: 0;
+	opacity: 0;
+	cursor: crosshair;
+}
+.spacer_top {
+    display: inline-block;
+    height: 30px;
+    width: 50px;
+}
+
+/***/
+
+/*** OVERLAY CONTENT ***/
+.overlay_content {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 7;
+
+    background-color: rgba(255, 255, 255, 0.96);
+    display: none;
+}
+.overlay_content img {
+	position: absolute;
+	top:50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	width: calc(100% - 200px);
+	height: calc(100% - 250px);
+	object-fit: contain;
+	pointer-events: none;
+}
+.pagination {
+	font-family: 'gta';
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    cursor: e-resize;
+}
+.close  {
+	font-size: 12px;
+	top:19px;
+	right: 20px;
+	font-family: gta;
+	position: fixed;
+	letter-spacing: 0.8px;
+	cursor: pointer;
+}
+
+#canvas_overlay {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    opacity: 0;
+    cursor: e-resize;
+}
+/***/
+
+/*** OVERLAY MENU ***/
+
+.overlay_menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 4;
+
+    background-color: rgba(255, 255, 255, 0.96);
+    display: none;
+}
+.show_menu .overlay_menu {
+	display: block;
+}
+
+.overlay_menu ul {
+	padding: 50px 20px 0 50px;
+}
+.overlay_menu li{
+    display: flex;
+    font-size: 12px;
+    line-height: 1.5;
+    /*justify-content: space-between;*/
+    word-break: keep-all;
+    margin-bottom: 14px;
+    cursor: pointer;
+    transition: 0.3s opacity ease-in-out;
+    text-align: left;
+}
+.overlay_menu li:hover {
+	opacity: 0.5;
+}
+.overlay_menu .project_title {
+	font-family: a-sd, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+.overlay_menu .project_date {
+	font-family: gta, sans-serif;
+	font-size: 10.5px;
+	position: relative;
+	/*top:-1px;*/
+	min-width: 100px
+}
+/***/
+
+
+/*** OVERLAY ABOUT ***/
+
+.overlay_about {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 4;
+
+    background-color: rgba(255, 255, 255, 0.96);
+    display: none;
+}
+.show_about .overlay_about {
+	display: block;
+}
+.overlay_about span {
+	display: block;
+
+	padding: 67px 20px 0 50px;
+	font-size: 12px;
+	line-height: 1.66;
+	font-family: a-sd, gta, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+	max-width: 500px;
+	word-break: keep-all;
+}
