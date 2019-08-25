@@ -208,7 +208,7 @@
 
 	$(document).on('click','#canvas_overlay',function(){
 
-		console.log(slider_index,  data[project_index].images.length)
+		// console.log(slider_index,  data[project_index].images.length)
 		if (slider_index !=  data[project_index].images.length ) {
 			slider_index++;
 		} else {
