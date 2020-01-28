@@ -117,11 +117,15 @@ ul, li {
 /*** RTL ***/
 
 .rtl {
+	position: fixed;
+	top:0;
+
 	float: right;
 	padding: 0px 50px;
 	margin:0;
 	width: 100%;
-	height: 100%;
+	/*height: 100%;*/
+	height: 100vh;
 	writing-mode: vertical-rl ;
 }
 .rtl li {
@@ -131,6 +135,7 @@ ul, li {
 	letter-spacing: 3px;
 	line-height: 40px;
 	white-space: nowrap;
+	/*padding:30px 20px 300px;*/
 	padding:30px 20px 300px;
 	display: block;
 	cursor: pointer;
@@ -156,7 +161,7 @@ ul, li {
 }
 .spacer_top {
     display: inline-block;
-    height: 30px;
+    height: 40px;
     width: 50px;
 }
 

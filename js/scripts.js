@@ -18,7 +18,7 @@
 	
 	var images = []
 
-	////////////////
+	//////////////// populate content at start
 	for (var i = 0; i < data.length; i++) {
 		
 		var content_to_append = (i+1)+' '+data[i].title+' '+data[i].date+'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' 
@@ -41,14 +41,12 @@
 
 		$('.rtl').append('<li data-index="'+i+'" class="li_'+i+'"><div class="spacer_top"></div>'+content_to_append+'</li>')
 
-
 		if ( i == data.length - 1 ) {
 			check_image_loaded('.rtl');
 		}
 
 
 		// populate list
-
 		$('.overlay_menu ul').append('\
 			<li data-index="'+i+'">\
 				<span class="project_date">'+data[i].date+'</span><span class="project_title">'+data[i].title+'</span>\
@@ -113,8 +111,6 @@
 
 		    }
 
-
-
 		  })
 		  .fail( function() {
 		    console.log('all images loaded, at least one is broken');
@@ -156,9 +152,10 @@
 	}
 
 
-	////////////////
+	//////////////// hover 
 	$(document).mousemove(function(event){
 
+		// only if not showing detail overlay
 		if ( !$('body').hasClass('show_content') ) {
 			// console.log(event);
 
@@ -185,7 +182,6 @@
 					// });
 					TweenMax.to("."+hovered_class, 1, {y: scroll_pos_y});			
 				}
-
 			}
 		}
 
@@ -205,6 +201,7 @@
 		check_image_loaded('.overlay_content');
 
 	});
+
 
 	$(document).on('click','#canvas_overlay',function(){
 
