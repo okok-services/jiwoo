@@ -255,13 +255,15 @@ ul, li {
 	top:50%;
 	left: 50%;
 	width: 20px;
-	opacity: 0;
+	opacity: 1;
 	pointer-events: none;
 	transform: translate(-50%,-50%);	
+	animation: 1s load-spin linear infinite;
 }
-.overlay_content.show .loading_icon {
-	opacity: 1;
-    animation: 1s load-spin linear infinite;
+.overlay_content.loaded .loading_icon {
+	opacity: 0;
+	animation: none;
+    
 }
 @keyframes load-spin {
 	0% {
