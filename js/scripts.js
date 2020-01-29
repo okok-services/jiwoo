@@ -212,7 +212,7 @@
 		// $('.overlay_content img').attr('src', 'img/'+(project_index+1)+'/'+slider_index+'.jpg');
 		$('.pagination').html('1 – '+data[project_index].images.length);
 
-		check_image_loaded('.overlay_content');
+		check_image_loaded('.overlay_content ul');
 	});
 
 
