@@ -151,13 +151,13 @@ ul, li {
 }
 .rtl li {
 	font-family: a-sd, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-	font-size: 25px;
+	font-size: 2vw;
 	font-weight: 500;
 	letter-spacing: 3px;
-	line-height: 40px;
+	line-height: 1.59;
 	white-space: nowrap;
 	/*padding:30px 20px 300px;*/
-	padding:30px 20px 300px;
+	padding:2.39vw 1.59vw 23.9vw;
 	display: block;
 	cursor: pointer;
 	/*cursor: pointer;*/
