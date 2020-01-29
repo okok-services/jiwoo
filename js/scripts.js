@@ -228,7 +228,10 @@
 
 
 	$(document).on('click','#canvas_overlay, .pagination',function(){
+		next_image()
+	});
 
+	function next_image() {
 		// console.log(slider_index,  data[project_index].images.length)
 		if (slider_index !=  data[project_index].images.length-1) {
 			slider_index++;
@@ -249,13 +252,39 @@
  		ctx_overlay.canvas.height = $('.overlay_content .li_'+slider_index+' img').height();
  		var image_to_use = $('.overlay_content .li_'+slider_index+' img')[0];
  		ctx_overlay.drawImage(image_to_use, 0, 0, ctx_overlay.canvas.width, ctx_overlay.canvas.height);
-	});
+	}
+	function prev_image() {
+		// console.log(slider_index,  data[project_index].images.length)
+		if (slider_index !=  0) {
+			slider_index--;
+		} else {
+			slider_index = data[project_index].images.length-1;
+		}
+		$('.pagination').html((slider_index+1)+' – '+data[project_index].images.length);
+
+		$('.overlay_content li').removeClass('show');
+		$('.overlay_content .li_'+slider_index).addClass('show');
+
+		// $('.overlay_content img').attr('src', 'img/'+(project_index+1)+'/'+slider_index+'.jpg');
+		// check_image_loaded('.overlay_content');
+
+ 		canvas_overlay = $('#canvas_overlay').get(0);
+ 		ctx_overlay = canvas_overlay.getContext("2d");
+ 		ctx_overlay.canvas.width = $('.overlay_content .li_'+slider_index+' img').width();
+ 		ctx_overlay.canvas.height = $('.overlay_content .li_'+slider_index+' img').height();
+ 		var image_to_use = $('.overlay_content .li_'+slider_index+' img')[0];
+ 		ctx_overlay.drawImage(image_to_use, 0, 0, ctx_overlay.canvas.width, ctx_overlay.canvas.height);
+	}
 
 	$('.close').click(function() {
+		close_overlay()
+	})
+
+	function close_overlay() {
 		$('.overlay_content').hide();	
 		$('body').removeClass('show_content');
 		$('.overlay_content').removeClass('loaded');
-	})
+	}
 
 	$(document).on('click','.menu_trigger',function(){
 		$('body').toggleClass('show_menu');
@@ -279,3 +308,29 @@
     		})
     	}
     };
+
+
+    ///////////// keyboard shortcuts for closing panels and image navigation
+	$( "body" ).keyup(function(e) {
+		console.log(e.keyCode)
+		if ( $('body').hasClass('show_content') ) {
+			if (e.keyCode == 27) {
+				close_overlay()
+			} else if(e.keyCode == 37) {
+				prev_image()
+			}
+			 else if(e.keyCode == 39) {
+				next_image()
+			}
+		} 
+		else if($('body').hasClass('show_about')) {
+			if (e.keyCode == 27) {
+				$('body').removeClass('show_about')
+			} 
+		}
+		else if($('body').hasClass('show_menu')) {
+			if (e.keyCode == 27) {
+				$('body').removeClass('show_menu')
+			} 
+		}
+	});

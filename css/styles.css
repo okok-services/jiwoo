@@ -305,7 +305,7 @@ ul, li {
 }
 .overlay_menu li{
     display: flex;
-    font-size: 12px;
+    font-size: 1.5vw;
     line-height: 1.5;
     /*justify-content: space-between;*/
     word-break: keep-all;
@@ -313,6 +313,7 @@ ul, li {
     cursor: pointer;
     transition: 0.3s opacity ease-in-out;
     text-align: left;
+    align-items: flex-start;
 }
 .overlay_menu li:hover {
 	opacity: 0.5;
@@ -322,10 +323,11 @@ ul, li {
 }
 .overlay_menu .project_date {
 	font-family: gta, sans-serif;
-	font-size: 10.5px;
+	font-size: 1vw;
 	position: relative;
+	margin-right: 3vw;
 	/*top:-1px;*/
-	min-width: 100px
+	/*min-width: 100px*/
 }
 /***/
 
@@ -350,9 +352,9 @@ ul, li {
 	display: block;
 
 	padding: 67px 20px 0 50px;
-	font-size: 14px;
+	font-size: 1.4vw;
 	line-height: 1.66;
 	font-family: a-sd, gta, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-	max-width: 500px;
+	max-width: 45vw;
 	word-break: keep-all;
 }
