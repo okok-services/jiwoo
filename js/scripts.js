@@ -242,7 +242,7 @@
 	$('.close').click(function() {
 		$('.overlay_content').hide();	
 		$('body').removeClass('show_content');
-		$('.overlay_content').removeClass('show');
+		$('.overlay_content').removeClass('loaded');
 	})
 
 	$(document).on('click','.menu_trigger',function(){
