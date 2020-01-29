@@ -8,12 +8,19 @@
 	var has_loaded_once = false;
 	var first_load = true;
 
+	var load_safecheck = 0;
+
 
 	document.fonts.onloadingdone = function (fontFaceSetEvent) {
 		console.log('font loaded', fontFaceSetEvent)
 		// alert('onloadingdone we have ' + fontFaceSetEvent.fontfaces.length + ' font faces loaded');
 		// all fonts loaded, hide preloaded
-		$('.preloader').fadeOut();
+		
+		load_safecheck++;
+		if (load_safecheck == 2) {
+			$('.preloader').fadeOut();	
+			console.log('fade out fired')
+		}
 	};
 	
 	var images = []
@@ -86,6 +93,11 @@
 
 				if (first_load) {
 					first_load = false;	
+				}
+				load_safecheck++;
+				if (load_safecheck == 2) {
+					$('.preloader').fadeOut();	
+					console.log('fade out fired')
 				}
 		    } 
 		    // when image overlay loads, add mousemove event for overlay canvas
