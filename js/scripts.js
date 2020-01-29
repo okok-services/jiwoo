@@ -10,7 +10,7 @@
 
 
 	document.fonts.onloadingdone = function (fontFaceSetEvent) {
-		console.log('ran')
+		console.log('font loaded', fontFaceSetEvent)
 		// alert('onloadingdone we have ' + fontFaceSetEvent.fontfaces.length + ' font faces loaded');
 		// all fonts loaded, hide preloaded
 		$('.preloader').fadeOut();
@@ -33,7 +33,7 @@
 		var search = ' ';
 		var n = Math.floor(Math.random()*space_length+1) ;
 		var to_replace = "<div class='img_wrap'>\
-						  <img id='img_"+i+"' src='img/"+(i+1)+"/1.jpg'+>\
+						  <img id='img_"+i+"' src='img/"+(i+1)+"/thumb/0.jpg'+>\
 						  <canvas id='canvas"+i+"' data-id="+i+" class='image_canvas'></canvas>\
 						  </div>"
 		content_to_append = content_to_append.replace(RegExp("^(?:.*? ){" + n + "}"), function(x){return x.replace(RegExp(search + "$"), to_replace)})
@@ -58,13 +58,15 @@
 	function check_image_loaded(div) {
 		$(div).imagesLoaded()
 		  .always( function( instance ) {
-		    console.log('all images loaded');
+		    // console.log('all images loaded');
 		  })
 		  .done( function( instance ) {
 		    console.log('all images successfully loaded');
 
 		    // console.log(div)
+		    // when images on rtl firsts loads, add mousemove event for rtl canvas
 		    if (div == '.rtl') {
+		    	console.log('case 1');
 				$('.image_canvas').mousemove(function(e) {
 					var canvas_id = $(this).attr('data-id');
 				    var canvasOffset = $(canvas[canvas_id]).offset();
@@ -76,7 +78,6 @@
 				    var pixelRedIndex = ((canvasY - 1) * (imageData.width * 4)) + ((canvasX - 1) * 4);
 				    var pixelcolor = "rgba("+pixels[pixelRedIndex]+", "+pixels[pixelRedIndex+1]+", "+pixels[pixelRedIndex+2]+", "+pixels[pixelRedIndex+3]+")";
 
-				    // $("body").css("backgroundColor", pixelcolor);
 				    TweenMax.to('.bg_color', 0.2, {background:'radial-gradient('+pixelcolor+' 0%, rgba(255,255,255,1) 60%', ease: Power1.easeInOut})
 				});
 				$('.image_canvas').mouseleave(function(e) {
@@ -84,15 +85,15 @@
 				});  	
 
 				if (first_load) {
-					first_load = false;
-					
-
+					first_load = false;	
 				}
-		    } else {
+		    } 
+		    // when image overlay loads, add mousemove event for overlay canvas
+		    else {
 		    	if (!has_loaded_once) {
 		    		
 		    		has_loaded_once = true;
-
+		    		console.log('case 2');
 					$('#canvas_overlay').mousemove(function(e) {
 					    var canvasOffset_o = $(canvas_overlay).offset();
 					    var canvasX_o = Math.floor(e.pageX-canvasOffset_o.left);
@@ -106,9 +107,11 @@
 					    // $("body").css("backgroundColor", pixelcolor);
 					    TweenMax.to('.bg_color_content', 0.2, {background:'radial-gradient('+pixelcolor_o+' 40%, rgba(255,255,255,1) 70%', ease: Power1.easeInOut})
 					});
-
 		    	}
 
+				// when overlay images are all loading, fade in images and hide loading
+				$('.overlay_content ul').addClass('show');
+				$('.loading_icon').removeClass('show');
 		    }
 
 		  })
@@ -128,19 +131,18 @@
 			    // $(canvas_elem).width(img_width); 
 			    // $(canvas_elem).height(img_height);
 
-			    console.log(img_width, img_height)
+				console.log('loaded: rtl images', img_width, img_height)
 
-		         canvas[canvas_id] = $(canvas_elem).get(0);
-		         ctx[canvas_id] = canvas[canvas_id].getContext("2d");
-		         ctx[canvas_id].canvas.width = image.img.width;
-		         ctx[canvas_id].canvas.height = image.img.height;
-		         var image_to_use = $('.li_'+canvas_id+' img')[0];
-		         // console.log(image_to_use)
-		         ctx[canvas_id].drawImage(image_to_use, 0, 0, img_width, img_height);
+				canvas[canvas_id] = $(canvas_elem).get(0);
+				ctx[canvas_id] = canvas[canvas_id].getContext("2d");
+				ctx[canvas_id].canvas.width = image.img.width;
+				ctx[canvas_id].canvas.height = image.img.height;
+				var image_to_use = $('.li_'+canvas_id+' img')[0];
+				// console.log(image_to_use)
+				ctx[canvas_id].drawImage(image_to_use, 0, 0, img_width, img_height);
 
 	     	} else {
-	     		console.log('hey2')
-
+	     		console.log('loaded: overlay img', img_width, img_height);
 	     		canvas_overlay = $('#canvas_overlay').get(0);
 	     		ctx_overlay = canvas_overlay.getContext("2d");
 	     		ctx_overlay.canvas.width = image.img.width;
@@ -187,39 +189,62 @@
 
 	}); /* end mousemove. */
 
-	var slider_index = 1;
+	var slider_index = 0;
 	var project_index = 0;
 
 	$(document).on('click','.rtl li, .overlay_menu li',function(){
 		project_index = parseInt($(this).attr('data-index'));
-		slider_index = 1;
+		slider_index = 0;
 		$('body').addClass('show_content');
 		$('.overlay_content').show()
-		$('.overlay_content img').attr('src', 'img/'+(project_index+1)+'/'+slider_index+'.jpg');
+		$('.loading_icon').addClass('show');
+
+		$('.overlay_content ul').empty();
+		$('.overlay_content li').removeClass('show');
+		
+		for (var i = 0; i < data[project_index].images.length; i++) {
+			$('.overlay_content ul').append('\
+				<li class="li_'+i+'"><img src="'+'img/'+(project_index+1)+'/'+i+'.jpg'+'"></li>\
+			')
+		};
+		$('.overlay_content .li_0').addClass('show')
+
+		// $('.overlay_content img').attr('src', 'img/'+(project_index+1)+'/'+slider_index+'.jpg');
 		$('.pagination').html('1 – '+data[project_index].images.length);
 
 		check_image_loaded('.overlay_content');
-
 	});
 
 
-	$(document).on('click','#canvas_overlay',function(){
+	$(document).on('click','#canvas_overlay, .pagination',function(){
 
 		// console.log(slider_index,  data[project_index].images.length)
-		if (slider_index !=  data[project_index].images.length ) {
+		if (slider_index !=  data[project_index].images.length-1) {
 			slider_index++;
 		} else {
-			slider_index = 1;
+			slider_index = 0;
 		}
-		$('.pagination').html(slider_index+' – '+data[project_index].images.length);
+		$('.pagination').html((slider_index+1)+' – '+data[project_index].images.length);
 
-		$('.overlay_content img').attr('src', 'img/'+(project_index+1)+'/'+slider_index+'.jpg');
-		check_image_loaded('.overlay_content');
+		$('.overlay_content li').removeClass('show');
+		$('.overlay_content .li_'+slider_index).addClass('show');
+
+		// $('.overlay_content img').attr('src', 'img/'+(project_index+1)+'/'+slider_index+'.jpg');
+		// check_image_loaded('.overlay_content');
+
+ 		canvas_overlay = $('#canvas_overlay').get(0);
+ 		ctx_overlay = canvas_overlay.getContext("2d");
+ 		ctx_overlay.canvas.width = $('.overlay_content .li_'+slider_index+' img').width();
+ 		ctx_overlay.canvas.height = $('.overlay_content .li_'+slider_index+' img').height();
+ 		var image_to_use = $('.overlay_content .li_'+slider_index+' img')[0];
+ 		ctx_overlay.drawImage(image_to_use, 0, 0, ctx_overlay.canvas.width, ctx_overlay.canvas.height);
 	});
 
 	$('.close').click(function() {
 		$('.overlay_content').hide();	
 		$('body').removeClass('show_content');
+		$('.overlay_content ul').removeClass('show');
+		$('.loading_icon').removeClass('show');
 	})
 
 	$(document).on('click','.menu_trigger',function(){
@@ -232,9 +257,15 @@
 	});
 
 
-	// alert('Roboto loaded? ' + document.fonts.check('1em Roboto'));  // false
+	//////////////// resize event
 
-	// document.fonts.ready.then(function () {
-	//   // alert('All fonts in use by visible text have loaded.');
-	//    // alert('Roboto loaded? ' + document.fonts.check('1em Roboto'));  // true
-	// });
+    window.addEventListener("resize", resize_event, false);
+
+    function resize_event() {
+    	if ( $('body').hasClass('show_content') ) {
+    		$('#canvas_overlay').css({
+    			width: $('.overlay_content img').width(),
+    			height: $('.overlay_content img').height()
+    		})
+    	}
+    };
