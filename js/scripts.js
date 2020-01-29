@@ -110,8 +110,7 @@
 		    	}
 
 				// when overlay images are all loading, fade in images and hide loading
-				$('.overlay_content ul').addClass('show');
-				$('.loading_icon').removeClass('show');
+				$('.overlay_content').addClass('loaded');
 		    }
 
 		  })
@@ -243,8 +242,7 @@
 	$('.close').click(function() {
 		$('.overlay_content').hide();	
 		$('body').removeClass('show_content');
-		$('.overlay_content ul').removeClass('show');
-		$('.loading_icon').removeClass('show');
+		$('.overlay_content').removeClass('show');
 	})
 
 	$(document).on('click','.menu_trigger',function(){

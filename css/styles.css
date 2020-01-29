@@ -204,7 +204,7 @@ ul, li {
 	transition: 0.3s opacity ease-in-out;
 	opacity: 0;
 }
-.overlay_content ul.show {
+.overlay_content.loaded ul {
 	opacity: 1;
 }
 .overlay_content li {
@@ -259,7 +259,7 @@ ul, li {
 	pointer-events: none;
 	transform: translate(-50%,-50%);	
 }
-.overlay_content .loading_icon.show {
+.overlay_content.show .loading_icon {
 	opacity: 1;
     animation: 1s load-spin linear infinite;
 }
