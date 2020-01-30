@@ -74,22 +74,26 @@
 		    // when images on rtl firsts loads, add mousemove event for rtl canvas
 		    if (div == '.rtl') {
 		    	console.log('case 1');
-				$('.image_canvas').mousemove(function(e) {
-					var canvas_id = $(this).attr('data-id');
-				    var canvasOffset = $(canvas[canvas_id]).offset();
-				    var canvasX = Math.floor(e.pageX-canvasOffset.left);
-				    var canvasY = Math.floor(e.pageY-canvasOffset.top);
 
-				    var imageData = ctx[canvas_id].getImageData(0, 0, canvas[canvas_id].width, canvas[canvas_id].height);
-				    var pixels = imageData.data;
-				    var pixelRedIndex = ((canvasY - 1) * (imageData.width * 4)) + ((canvasX - 1) * 4);
-				    var pixelcolor = "rgba("+pixels[pixelRedIndex]+", "+pixels[pixelRedIndex+1]+", "+pixels[pixelRedIndex+2]+", "+pixels[pixelRedIndex+3]+")";
+		    	if (window.innerWidth > 1024) {
 
-				    TweenMax.to('.bg_color', 0.2, {background:'radial-gradient('+pixelcolor+' 0%, rgba(255,255,255,1) 60%', ease: Power1.easeInOut})
-				});
-				$('.image_canvas').mouseleave(function(e) {
-					TweenMax.to('.bg_color', 0.2, {background:'radial-gradient(rgba(255,255,255,1) 0%, rgba(255,255,255,1) 100%',  ease: Power1.easeInOut})
-				});  	
+					$('.image_canvas').mousemove(function(e) {
+						var canvas_id = $(this).attr('data-id');
+					    var canvasOffset = $(canvas[canvas_id]).offset();
+					    var canvasX = Math.floor(e.pageX-canvasOffset.left);
+					    var canvasY = Math.floor(e.pageY-canvasOffset.top);
+
+					    var imageData = ctx[canvas_id].getImageData(0, 0, canvas[canvas_id].width, canvas[canvas_id].height);
+					    var pixels = imageData.data;
+					    var pixelRedIndex = ((canvasY - 1) * (imageData.width * 4)) + ((canvasX - 1) * 4);
+					    var pixelcolor = "rgba("+pixels[pixelRedIndex]+", "+pixels[pixelRedIndex+1]+", "+pixels[pixelRedIndex+2]+", "+pixels[pixelRedIndex+3]+")";
+
+					    TweenMax.to('.bg_color', 0.2, {background:'radial-gradient('+pixelcolor+' 0%, rgba(255,255,255,1) 60%', ease: Power1.easeInOut})
+					});
+					$('.image_canvas').mouseleave(function(e) {
+						TweenMax.to('.bg_color', 0.2, {background:'radial-gradient(rgba(255,255,255,1) 0%, rgba(255,255,255,1) 100%',  ease: Power1.easeInOut})
+					}); 
+				} 	
 
 				if (first_load) {
 					first_load = false;	
@@ -106,6 +110,7 @@
 		    		
 		    		has_loaded_once = true;
 		    		console.log('case 2');
+
 					$('#canvas_overlay').mousemove(function(e) {
 					    var canvasOffset_o = $(canvas_overlay).offset();
 					    var canvasX_o = Math.floor(e.pageX-canvasOffset_o.left);
@@ -169,7 +174,7 @@
 	$(document).mousemove(function(event){
 
 		// only if not showing detail overlay
-		if ( !$('body').hasClass('show_content') ) {
+		if ( !$('body').hasClass('show_content') &&  window.innerWidth > 1024) {
 			// console.log(event);
 
 			var scroll_excess_x = $('.rtl')[0].scrollWidth - window.innerWidth
@@ -246,12 +251,7 @@
 		// $('.overlay_content img').attr('src', 'img/'+(project_index+1)+'/'+slider_index+'.jpg');
 		// check_image_loaded('.overlay_content');
 
- 		canvas_overlay = $('#canvas_overlay').get(0);
- 		ctx_overlay = canvas_overlay.getContext("2d");
- 		ctx_overlay.canvas.width = $('.overlay_content .li_'+slider_index+' img').width();
- 		ctx_overlay.canvas.height = $('.overlay_content .li_'+slider_index+' img').height();
- 		var image_to_use = $('.overlay_content .li_'+slider_index+' img')[0];
- 		ctx_overlay.drawImage(image_to_use, 0, 0, ctx_overlay.canvas.width, ctx_overlay.canvas.height);
+ 		redraw_overlay_canvas()
 	}
 	function prev_image() {
 		// console.log(slider_index,  data[project_index].images.length)
@@ -268,6 +268,10 @@
 		// $('.overlay_content img').attr('src', 'img/'+(project_index+1)+'/'+slider_index+'.jpg');
 		// check_image_loaded('.overlay_content');
 
+ 		redraw_overlay_canvas()
+	}
+
+	function redraw_overlay_canvas() {
  		canvas_overlay = $('#canvas_overlay').get(0);
  		ctx_overlay = canvas_overlay.getContext("2d");
  		ctx_overlay.canvas.width = $('.overlay_content .li_'+slider_index+' img').width();
@@ -306,14 +310,27 @@
     			width: $('.overlay_content img').width(),
     			height: $('.overlay_content img').height()
     		})
+	 		
+	 		redraw_overlay_canvas()
     	} 
 
-    	// $('.rtl li').each(function(index) {
-    	// 	$('#canvas'+index).css({
-    	// 		width: $('.rtl .li_'+index+' img').width(),
-    	// 		height: $('.rtl .li_'+index+' img').height()
-    	// 	})
-    	// })
+    	$('.rtl li').each(function(index) {
+    		var width_to_use = $('.rtl .li_'+index+' img').width();
+    		var height_to_use = $('.rtl .li_'+index+' img').height();
+
+    		$('#canvas'+index).css({
+    			width: width_to_use,
+    			height: height_to_use
+    		})
+
+			canvas[index] = $('#canvas'+index).get(0);
+			ctx[index] = canvas[index].getContext("2d");
+			ctx[index].canvas.width = width_to_use;
+			ctx[index].canvas.height = height_to_use;
+			var image_to_use_rtl = $('.li_'+index+' img')[0];
+			// console.log(image_to_use)
+			ctx[index].drawImage(image_to_use_rtl, 0, 0, width_to_use, height_to_use);
+    	})
     };
 
 
