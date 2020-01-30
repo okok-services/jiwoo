@@ -17,18 +17,19 @@
 		console.log('font loaded', fontFaceSetEvent)
 		// alert('onloadingdone we have ' + fontFaceSetEvent.fontfaces.length + ' font faces loaded');
 		// all fonts loaded, hide preloaded
-		
-		load_safecheck++;
-		if (load_safecheck == 2) {
-			$('.preloader').fadeOut();	
-			console.log('fade out fired')
-		}
+
 	};
 
 	document.fonts.ready.then(function() {
 		console.log('fonts ready')
 	  // Any operation that needs to be done only after all the fonts
 	  // have finished loading can go here.
+		
+		load_safecheck++;
+		if (load_safecheck == 2) {
+			$('.preloader').fadeOut();	
+			console.log('fade out fired')
+		}
 	});
 	
 	var images = []
