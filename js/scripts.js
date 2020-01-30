@@ -76,7 +76,7 @@
 		    	console.log('case 1');		    	
 
 				$('.image_canvas').mousemove(function(e) {
-					if (window.innerWidth > 1024) {
+					// if (window.innerWidth > 1024) {
 						var canvas_id = $(this).attr('data-id');
 					    var canvasOffset = $(canvas[canvas_id]).offset();
 					    var canvasX = Math.floor(e.pageX-canvasOffset.left);
@@ -88,7 +88,7 @@
 					    var pixelcolor = "rgba("+pixels[pixelRedIndex]+", "+pixels[pixelRedIndex+1]+", "+pixels[pixelRedIndex+2]+", "+pixels[pixelRedIndex+3]+")";
 
 					    TweenMax.to('.bg_color', 0.3, {background:'radial-gradient('+pixelcolor+' 0%, rgba(255,255,255,1) 60%', ease: Power1.easeInOut})
-				    } 	
+				    // } 	
 				});
 				$('.image_canvas').mouseleave(function(e) {
 					if (window.innerWidth > 1024) {
