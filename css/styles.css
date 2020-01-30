@@ -433,6 +433,6 @@ ul, li {
 		font-size: 10px;
 	}
 	.overlay_content img {
-		width: calc(100% - 100px);
+		width: calc(100% - 60px);
 	}
 }
