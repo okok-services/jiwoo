@@ -73,11 +73,10 @@
 		    // console.log(div)
 		    // when images on rtl firsts loads, add mousemove event for rtl canvas
 		    if (div == '.rtl') {
-		    	console.log('case 1');
+		    	console.log('case 1');		    	
 
-		    	if (window.innerWidth > 1024) {
-
-					$('.image_canvas').mousemove(function(e) {
+				$('.image_canvas').mousemove(function(e) {
+					if (window.innerWidth > 1024) {
 						var canvas_id = $(this).attr('data-id');
 					    var canvasOffset = $(canvas[canvas_id]).offset();
 					    var canvasX = Math.floor(e.pageX-canvasOffset.left);
@@ -88,12 +87,15 @@
 					    var pixelRedIndex = ((canvasY - 1) * (imageData.width * 4)) + ((canvasX - 1) * 4);
 					    var pixelcolor = "rgba("+pixels[pixelRedIndex]+", "+pixels[pixelRedIndex+1]+", "+pixels[pixelRedIndex+2]+", "+pixels[pixelRedIndex+3]+")";
 
-					    TweenMax.to('.bg_color', 0.2, {background:'radial-gradient('+pixelcolor+' 0%, rgba(255,255,255,1) 60%', ease: Power1.easeInOut})
-					});
-					$('.image_canvas').mouseleave(function(e) {
-						TweenMax.to('.bg_color', 0.2, {background:'radial-gradient(rgba(255,255,255,1) 0%, rgba(255,255,255,1) 100%',  ease: Power1.easeInOut})
-					}); 
-				} 	
+					    TweenMax.to('.bg_color', 0.3, {background:'radial-gradient('+pixelcolor+' 0%, rgba(255,255,255,1) 60%', ease: Power1.easeInOut})
+				    } 	
+				});
+				$('.image_canvas').mouseleave(function(e) {
+					if (window.innerWidth > 1024) {
+						TweenMax.to('.bg_color', 0.3, {background:'radial-gradient(rgba(255,255,255,1) 0%, rgba(255,255,255,1) 100%',  ease: Power1.easeInOut})
+					}
+				}); 
+				
 
 				if (first_load) {
 					first_load = false;	
@@ -122,7 +124,7 @@
 					    var pixelcolor_o = "rgba("+pixels_o[pixelRedIndex_o]+", "+pixels_o[pixelRedIndex_o+1]+", "+pixels_o[pixelRedIndex_o+2]+", "+pixels_o[pixelRedIndex_o+3]+")";
 
 					    // $("body").css("backgroundColor", pixelcolor);
-					    TweenMax.to('.bg_color_content', 0.2, {background:'radial-gradient('+pixelcolor_o+' 40%, rgba(255,255,255,1) 70%', ease: Power1.easeInOut})
+					    TweenMax.to('.bg_color_content', 0.3, {background:'radial-gradient('+pixelcolor_o+' 40%, rgba(255,255,255,1) 70%', ease: Power1.easeInOut})
 					});
 		    	}
 
