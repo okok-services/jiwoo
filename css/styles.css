@@ -378,6 +378,9 @@ ul, li {
 
 
 @media (max-width: 1024px) {
+	.top_bar {
+		height: 50px;
+	}
 	.logo {
 		top:24px;
 	}
@@ -387,8 +390,8 @@ ul, li {
 	.rtl {
 		writing-mode: unset;
 		padding: 0 0 50px;
-		top: 50px;
-		height: calc(100% - 50px);
+		top: 60px;
+		height: calc(100% - 60px);
 		transform: none !important;
 		overflow: auto;
 		-webkit-overflow-scrolling: touch; /* Lets it scroll lazy */
