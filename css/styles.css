@@ -81,7 +81,7 @@ ul, li {
 	max-width: 150px;
 }
 .preloader .loading_icon {
-    min-width: 20px;
+    min-width: 17px;
     margin-left: 10px;
     animation: 1s load-spin linear infinite;
 }
