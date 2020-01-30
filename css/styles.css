@@ -388,12 +388,12 @@ ul, li {
 		background: radial-gradient(#636363 0%, rgb(255, 255, 255) 60%);
 	}
 	.rtl {
-		writing-mode: unset;
-		padding: 0 0 50px;
-		top: 60px;
-		height: calc(100% - 60px);
-		transform: none !important;
-		overflow: auto;
+	    writing-mode: unset;
+	    padding: 60px 0 50px;
+	    top: 0;
+	    height: 100%;
+	    transform: none !important;
+	    overflow: auto;
 		-webkit-overflow-scrolling: touch; /* Lets it scroll lazy */
 
 	}
@@ -435,6 +435,7 @@ ul, li {
 	}
 	.overlay_menu .project_date {
 		font-size: 10px;
+		margin-right: 20px;
 	}
 	.overlay_content img {
 		width: calc(100% - 60px);
