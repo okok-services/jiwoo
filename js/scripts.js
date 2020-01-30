@@ -223,11 +223,12 @@
 		project_index = parseInt($(this).attr('data-index'));
 		slider_index = 0;
 		$('body').addClass('show_content');
-		$('.overlay_content').show()
 		$('.loading_icon').addClass('show');
 
 		$('.overlay_content ul').empty();
 		$('.overlay_content li').removeClass('show');
+
+		$('.overlay_content').fadeIn(200);
 		
 		for (var i = 0; i < data[project_index].images.length; i++) {
 			$('.overlay_content ul').append('\
@@ -296,7 +297,7 @@
 	})
 
 	function close_overlay() {
-		$('.overlay_content').hide();	
+		$('.overlay_content').fadeOut(200);	
 		$('body').removeClass('show_content');
 		$('.overlay_content').removeClass('loaded');
 	}
