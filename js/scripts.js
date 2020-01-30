@@ -306,7 +306,14 @@
     			width: $('.overlay_content img').width(),
     			height: $('.overlay_content img').height()
     		})
-    	}
+    	} 
+
+    	// $('.rtl li').each(function(index) {
+    	// 	$('#canvas'+index).css({
+    	// 		width: $('.rtl .li_'+index+' img').width(),
+    	// 		height: $('.rtl .li_'+index+' img').height()
+    	// 	})
+    	// })
     };
 
 
