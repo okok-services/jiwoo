@@ -111,7 +111,8 @@ ul, li {
     height: 120vh;
     /*background: radial-gradient(red 0%, white 60%);*/
     /*background:  radial-gradient(rgb(255, 255, 50) 0%, rgb(255, 255, 255) 90%);*/
-    background: radial-gradient(rgb(4, 0, 255) 0%, rgb(255, 255, 255) 90%);
+    /*background: radial-gradient(rgb(4, 0, 255) 0%, rgb(255, 255, 255) 90%);*/
+    background: radial-gradient(rgb(43, 43, 43) 0%, rgb(255, 255, 255) 90%);
     z-index: -1;
     /*border-radius: 50%;*/
 }
@@ -434,5 +435,8 @@ ul, li {
 	}
 	.overlay_content img {
 		width: calc(100% - 60px);
+	}
+	.bg_color_content {
+		background: radial-gradient(rgb(43, 43, 43) 0%, rgb(255, 255, 255) 90%);
 	}
 }
