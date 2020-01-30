@@ -10,6 +10,8 @@
 
 	var load_safecheck = 0;
 
+	let fontFaceSet = document.fonts;
+
 
 	document.fonts.onloadingdone = function (fontFaceSetEvent) {
 		console.log('font loaded', fontFaceSetEvent)
@@ -22,6 +24,12 @@
 			console.log('fade out fired')
 		}
 	};
+
+	document.fonts.ready.then(function() {
+		console.log('fonts ready')
+	  // Any operation that needs to be done only after all the fonts
+	  // have finished loading can go here.
+	});
 	
 	var images = []
 
