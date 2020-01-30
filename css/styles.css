@@ -365,7 +365,7 @@ ul, li {
 
 @media (max-width: 1024px) {
 	.bg_color {
-		background: radial-gradient(#5c59ff 0%, rgb(255, 255, 255) 60%);
+		background: radial-gradient(#636363 0%, rgb(255, 255, 255) 60%);
 	}
 	.rtl {
 		writing-mode: unset;
