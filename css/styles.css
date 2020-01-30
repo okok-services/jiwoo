@@ -220,7 +220,7 @@ ul, li {
 	left: 50%;
 	transform: translate(-50%,-50%);
 	width: calc(100% - 200px);
-	max-height: 100.1vh;
+	max-height: 90vh;
 	/*height: calc(100% - 250px);*/
 	object-fit: contain;
 	pointer-events: none;
