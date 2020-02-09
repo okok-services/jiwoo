@@ -389,7 +389,7 @@ ul, li {
 
 
 
-@media (max-width: 1024px) {
+@media (max-width: 768px) {
 
 	.logo, .rtl li, .menu_trigger, .overlay_menu li, .close {
 		-webkit-tap-highlight-color: rgba(0, 0, 0, 0.04);
