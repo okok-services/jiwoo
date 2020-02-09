@@ -37,7 +37,7 @@
 	//////////////// populate content at start
 	for (var i = 0; i < data.length; i++) {
 		
-		var content_to_append = (i+1)+' '+data[i].title+' '+data[i].date+'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' 
+		var content_to_append = (i+1)+' '+data[i].title+'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' 
 		// content_to_append = content_to_append.substr(0, 0)+ str.substr(index);
 
 		// count number of spaces
@@ -133,7 +133,12 @@
 					    var pixelcolor_o = "rgba("+pixels_o[pixelRedIndex_o]+", "+pixels_o[pixelRedIndex_o+1]+", "+pixels_o[pixelRedIndex_o+2]+", "+pixels_o[pixelRedIndex_o+3]+")";
 
 					    // $("body").css("backgroundColor", pixelcolor);
-					    TweenMax.to('.bg_color_content', 0.3, {background:'radial-gradient('+pixelcolor_o+' 40%, rgba(255,255,255,1) 70%', ease: Power1.easeInOut})
+					    if (window.innerWidth > 570) {
+					    	TweenMax.to('.bg_color_content', 0.3, {background:'radial-gradient('+pixelcolor_o+' 40%, rgba(255,255,255,1) 70%', ease: Power1.easeInOut})
+					    } else {
+					    	TweenMax.to('.bg_color_content', 0.3, {background:'radial-gradient('+pixelcolor_o+' 20%, rgba(255,255,255,1) 70%', ease: Power1.easeInOut})	
+					    }
+					    
 					});
 		    	}
 

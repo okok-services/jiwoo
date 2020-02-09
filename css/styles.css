@@ -73,7 +73,7 @@ ul, li {
 .preloader .loader_wrap {
 	position: fixed;
 	top:50%;
-	left: 50%;
+	left: 52%;
 	transform: translate(-50%,-50%);
 	max-width: 150px;
 	display: flex;
@@ -107,7 +107,7 @@ ul, li {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 120vh;
+    width: 120vw;
     height: 120vh;
     /*background: radial-gradient(red 0%, white 60%);*/
     /*background:  radial-gradient(rgb(255, 255, 50) 0%, rgb(255, 255, 255) 90%);*/
@@ -309,10 +309,15 @@ ul, li {
     z-index: 4;
 
     background-color: rgba(255, 255, 255, 0.96);
-    display: none;
+    /*display: none;*/
+    transition: 0.2s opacity;
+    opacity: 0;
+    pointer-events: none;
 }
 .show_menu .overlay_menu {
-	display: block;
+	/*display: block;*/
+	opacity: 1; 
+	pointer-events: auto;
 }
 
 .overlay_menu ul {
@@ -358,10 +363,17 @@ ul, li {
     z-index: 4;
 
     background-color: rgba(255, 255, 255, 0.96);
-    display: none;
+    /*display: none;*/
+    opacity: 0;
+    transition: 0.2s opacity;
+    pointer-events: none;
+
 }
 .show_about .overlay_about {
-	display: block;
+	/*display: block;*/
+	opacity: 1;
+	pointer-events: auto;
+
 }
 .overlay_about span {
 	display: block;
@@ -378,11 +390,23 @@ ul, li {
 
 
 @media (max-width: 1024px) {
+
+	.logo, .rtl li, .menu_trigger, .overlay_menu li, .close {
+		-webkit-tap-highlight-color: rgba(0, 0, 0, 0.04);
+		/*-webkit-tap-highlight-color: black;*/
+		-webkit-user-select: none;
+		-khtml-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+	}
 	.top_bar {
 		height: 50px;
 	}
 	.logo {
 		top:24px;
+
+
 	}
 	.bg_color {
 		background: radial-gradient(#636363 0%, rgb(255, 255, 255) 60%);
@@ -404,14 +428,6 @@ ul, li {
 		letter-spacing: 0;
 		transform: none !important;
 		word-break: keep-all;
-
-		-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-		-webkit-tap-highlight-color: transparent;
-		-webkit-user-select: none;
-		-khtml-user-select: none;
-		-moz-user-select: none;
-		-ms-user-select: none;
-		user-select: none;
 	}
 	.rtl li img {
 		width: 7vw;
@@ -426,6 +442,9 @@ ul, li {
 		font-size: 16px;
 		max-width: 100%;
 		padding: 67px 30px 0;
+	}
+	.show_menu .overlay_menu {
+		overflow: auto;
 	}
 	.overlay_menu ul {
 		padding: 50px 20px  50px;
