@@ -379,3 +379,62 @@
 			} 
 		}
 	});
+
+
+
+
+
+
+	////////// favicon
+
+	var head = document.head || document.getElementsByTagName('head')[0];
+
+	function changeFavicon(src) {
+	  var link = document.createElement('link');
+	  var oldLink = document.querySelector('link[rel="shortcut icon"]');
+	  link.rel = 'shortcut icon';
+	  link.href = src;
+	  if (oldLink) {
+	    head.removeChild(oldLink);
+	  }
+	  head.appendChild(link);
+	}
+
+	function initFavicon() {
+	  var loadedDataSrcs = {};
+	  var currentFavicon = 0;
+	  var fav_loaded = 0;
+	  var fav_count = 3;
+	  var canvas_fav = document.createElement('canvas');
+	  var ctx_fav = canvas_fav.getContext('2d');
+
+	  function fav_loop() {
+	    // console.log(currentFavicon)
+	    currentFavicon++;
+	    if (currentFavicon >= fav_count) currentFavicon = 0;
+	    changeFavicon(loadedDataSrcs[currentFavicon]);
+	    setTimeout(function() {requestAnimationFrame(fav_loop)}, 99);
+	  }
+
+	  function getData() {
+	    var loadImage = new Image();
+	    loadImage.src = 'img/favicon/frames/c' + fav_loaded +'.png';
+	    loadImage.onload = function() {
+	      canvas_fav.width = this.naturalWidth;
+	      canvas_fav.height = this.naturalHeight;
+	      ctx_fav.drawImage(this, 0, 0);
+	      loadedDataSrcs[fav_loaded] = canvas_fav.toDataURL('image/png');
+	      fav_loaded++;
+	      if (fav_loaded === fav_count) {
+	        requestAnimationFrame(fav_loop);
+	      } else {
+	        getData();
+	      }
+	    }
+	  }
+
+	  getData()
+
+	};
+
+	initFavicon()
