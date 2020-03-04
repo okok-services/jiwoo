@@ -413,7 +413,7 @@
 	    currentFavicon++;
 	    if (currentFavicon >= fav_count) currentFavicon = 0;
 	    changeFavicon(loadedDataSrcs[currentFavicon]);
-	    setTimeout(function() {requestAnimationFrame(fav_loop)}, 300);
+	    setTimeout(function() {requestAnimationFrame(fav_loop)}, 500);
 	  }
 
 	  function getData() {
