@@ -18,26 +18,26 @@
    src: url(fonts/GT-America-Expanded-Regular.woff) format('woff');
 }*/
 
-@font-face {
+/*@font-face {
    font-family: 'f';
    font-style: normal;
    font-weight: 300;
    src: url(fonts/favorit/FavoritHangul-Light.woff) format('woff');
-}
+}*/
 @font-face {
    font-family: 'f';
    font-style: normal;
    font-weight: 350;
    src: url(fonts/favorit/FavoritHangul-Book.woff) format('woff');
 }
-
+/*
 @font-face {
    font-family: 'f';
    font-style: normal;
    font-weight: 400;
    src: url(fonts/favorit/FavoritHangul-Regular.woff) format('woff');
 }
-
+*/
 
 @font-face {
    font-family: 'f-l';
