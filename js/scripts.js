@@ -97,11 +97,15 @@
 					    var pixelcolor = "rgba("+pixels[pixelRedIndex]+", "+pixels[pixelRedIndex+1]+", "+pixels[pixelRedIndex+2]+", "+pixels[pixelRedIndex+3]+")";
 
 					    TweenMax.to('.bg_color', 0.3, {background:'radial-gradient('+pixelcolor+' 0%, rgba(255,255,255,1) 60%', ease: Power1.easeInOut})
+					    TweenMax.to('.menu_trigger', 0.3, {background:'radial-gradient(20.00px at 50% 50%, '+pixelcolor+' 0%, rgba(196, 196, 196, 0) 100%)', ease: Power1.easeInOut})
+					    
+
 				    // } 	
 				});
 				$('.image_canvas').mouseleave(function(e) {
 					if (window.innerWidth > 1024) {
 						TweenMax.to('.bg_color', 0.3, {background:'radial-gradient(rgba(255,255,255,1) 0%, rgba(255,255,255,1) 100%',  ease: Power1.easeInOut})
+						TweenMax.to('.menu_trigger', 0.3, {background:'radial-gradient(20.00px at 50% 50%, #000000 0%, rgba(196, 196, 196, 0) 100%)', ease: Power1.easeInOut})
 					}
 				}); 
 				
