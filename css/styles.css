@@ -110,10 +110,10 @@ ul, li {
 	display: flex;
     justify-content: center;
     align-items: center;
-    font-family: 'f-l';
 }
 .loader_logo {
 	max-width: 150px;
+	width: 82px;
 }
 .preloader .loading_icon {
     min-width: 17px;
