@@ -12,6 +12,9 @@
 
 	let fontFaceSet = document.fonts;
 
+	var color_to_use = "rgba(0,0,255,1)"
+	var color_to_use_t = "rgba(0,0,255,0)"
+
 
 	document.fonts.onloadingdone = function (fontFaceSetEvent) {
 		console.log('font loaded', fontFaceSetEvent)
@@ -95,6 +98,10 @@
 					    var pixels = imageData.data;
 					    var pixelRedIndex = ((canvasY - 1) * (imageData.width * 4)) + ((canvasX - 1) * 4);
 					    var pixelcolor = "rgba("+pixels[pixelRedIndex]+", "+pixels[pixelRedIndex+1]+", "+pixels[pixelRedIndex+2]+", "+pixels[pixelRedIndex+3]+")";
+					    var pixelcolor_t = "rgba("+pixels[pixelRedIndex]+", "+pixels[pixelRedIndex+1]+", "+pixels[pixelRedIndex+2]+", 0)";
+					    color_to_use = pixelcolor;
+					    // with alpha0 
+					    color_to_use_t = pixelcolor_t;
 
 					    TweenMax.to('.bg_color', 0.3, {background:'radial-gradient('+pixelcolor+' 0%, rgba(255,255,255,1) 60%', ease: Power1.easeInOut})
 					    TweenMax.to('.menu_trigger', 0.3, {background:'radial-gradient(20.00px at 50% 50%, '+pixelcolor+' 0%, rgba(196, 196, 196, 0) 100%)', ease: Power1.easeInOut})
@@ -106,6 +113,9 @@
 					if (window.innerWidth > 1024) {
 						TweenMax.to('.bg_color', 0.3, {background:'radial-gradient(rgba(255,255,255,1) 0%, rgba(255,255,255,1) 100%',  ease: Power1.easeInOut})
 						TweenMax.to('.menu_trigger', 0.3, {background:'radial-gradient(20.00px at 50% 50%, #000000 0%, rgba(196, 196, 196, 0) 100%)', ease: Power1.easeInOut})
+						color_to_use = "rgb(0, 0, 255, 1)";
+						color_to_use_t = "rgb(0, 0, 255, 0)";
+						// console.log(color_to_use, "leave")
 					}
 				}); 
 				
@@ -135,6 +145,10 @@
 					    var pixels_o = imageData_o.data;
 					    var pixelRedIndex_o = ((canvasY_o - 1) * (imageData_o.width * 4)) + ((canvasX_o - 1) * 4);
 					    var pixelcolor_o = "rgba("+pixels_o[pixelRedIndex_o]+", "+pixels_o[pixelRedIndex_o+1]+", "+pixels_o[pixelRedIndex_o+2]+", "+pixels_o[pixelRedIndex_o+3]+")";
+					    var pixelcolor_o_t = "rgba("+pixels_o[pixelRedIndex_o]+", "+pixels_o[pixelRedIndex_o+1]+", "+pixels_o[pixelRedIndex_o+2]+", 0)";
+					    color_to_use = pixelcolor_o;
+					    color_to_use_t = pixelcolor_o_t;
+
 
 					    // $("body").css("backgroundColor", pixelcolor);
 					    if (window.innerWidth > 570) {
@@ -400,30 +414,67 @@
 	  head.appendChild(link);
 	}
 
+
 	function initFavicon() {
 	  var loadedDataSrcs = {};
 	  var currentFavicon = 0;
 	  var fav_loaded = 0;
-	  var fav_count = 5;
+	  var fav_count = 1;
 	  var canvas_fav = document.createElement('canvas');
 	  var ctx_fav = canvas_fav.getContext('2d');
 
+
 	  function fav_loop() {
 	    // console.log(currentFavicon)
-	    currentFavicon++;
-	    if (currentFavicon >= fav_count) currentFavicon = 0;
-	    changeFavicon(loadedDataSrcs[currentFavicon]);
-	    setTimeout(function() {requestAnimationFrame(fav_loop)}, 500);
+	    // currentFavicon++;
+	    // if (currentFavicon >= fav_count) currentFavicon = 0;
+
+		var grd = ctx_fav.createRadialGradient(16, 16, 0.1, 16, 16, 16);
+		// console.log(color_to_use)
+		if( color_to_use == 'rgba(undefined, undefined, undefined, undefined)' ) {
+			grd.addColorStop(0, "rgba(0,0,255,1)" );	
+			console.log('hit')
+		}else {
+			grd.addColorStop(0, color_to_use);
+		}
+		
+		if( color_to_use_t == 'rgba(undefined, undefined, undefined, undefined)' || 
+			color_to_use_t == 'rgba(undefined, undefined, undefined, 0)') {
+			grd.addColorStop(1, "rgba(0,0,255,0)");
+			console.log('hit 2')
+		} else {
+			grd.addColorStop(1, color_to_use_t);
+		}
+
+		// Fill with gradient
+		ctx_fav.fillStyle = grd;
+		ctx_fav.clearRect(0, 0, canvas_fav.width, canvas_fav.height);
+		ctx_fav.fillRect(0, 0, canvas_fav.width, canvas_fav.height);
+		var color_data = canvas_fav.toDataURL('image/png')
+	    changeFavicon(color_data);
+	    setTimeout(function() {requestAnimationFrame(fav_loop)}, 100);
 	  }
 
 	  function getData() {
+	  	console.log('get data')
 	    var loadImage = new Image();
 	    loadImage.src = 'img/favicon/frames/c' + fav_loaded +'.png';
 	    loadImage.onload = function() {
 	      canvas_fav.width = this.naturalWidth;
 	      canvas_fav.height = this.naturalHeight;
-	      ctx_fav.drawImage(this, 0, 0);
-	      loadedDataSrcs[fav_loaded] = canvas_fav.toDataURL('image/png');
+	      // ctx_fav.drawImage(this, 0, 0);
+
+	      var grd = ctx_fav.createRadialGradient(16, 16, 0.1, 16, 16, 16);
+	      grd.addColorStop(0, color_to_use);
+	      grd.addColorStop(1, color_to_use_t);
+
+	      ctx_fav.fillStyle = grd;
+	      ctx_fav.clearRect(0, 0, canvas_fav.width, canvas_fav.height);
+		  ctx_fav.fillRect(0, 0, canvas_fav.width, canvas_fav.height);
+	      // console.log(color_to_use)
+		  var color_data = canvas_fav.toDataURL('image/png')
+		  changeFavicon(color_data);
+
 	      fav_loaded++;
 	      if (fav_loaded === fav_count) {
 	        requestAnimationFrame(fav_loop);
