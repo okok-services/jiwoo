@@ -404,7 +404,7 @@
 	  var loadedDataSrcs = {};
 	  var currentFavicon = 0;
 	  var fav_loaded = 0;
-	  var fav_count = 3;
+	  var fav_count = 4;
 	  var canvas_fav = document.createElement('canvas');
 	  var ctx_fav = canvas_fav.getContext('2d');
 
