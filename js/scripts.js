@@ -404,7 +404,7 @@
 	  var loadedDataSrcs = {};
 	  var currentFavicon = 0;
 	  var fav_loaded = 0;
-	  var fav_count = 4;
+	  var fav_count = 5;
 	  var canvas_fav = document.createElement('canvas');
 	  var ctx_fav = canvas_fav.getContext('2d');
 
@@ -413,7 +413,7 @@
 	    currentFavicon++;
 	    if (currentFavicon >= fav_count) currentFavicon = 0;
 	    changeFavicon(loadedDataSrcs[currentFavicon]);
-	    setTimeout(function() {requestAnimationFrame(fav_loop)}, 200);
+	    setTimeout(function() {requestAnimationFrame(fav_loop)}, 300);
 	  }
 
 	  function getData() {
