@@ -84,10 +84,10 @@ ul, li {
 	pointer-events: none;
 }
 .font_1 {
-	font-family: 'gta';
+	font-family: 'f-l';
 }
 .font_2 {
-	font-family: 'a-sd';
+	font-family: 'f';
 }
 
 /*** PRELOADER ***/
@@ -422,7 +422,7 @@ ul, li {
 	padding: 67px 20px 0 50px;
 	font-size: 1.4vw;
 	line-height: 1.66;
-	font-family: f, a-sd, gta, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+	font-family: f, a-sd, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 	font-weight: 350;
 	max-width: 45vw;
 	word-break: keep-all;
