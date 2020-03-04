@@ -409,7 +409,6 @@ ul, li {
     opacity: 0;
     transition: 0.2s opacity;
     pointer-events: none;
-
 }
 .show_about .overlay_about {
 	/*display: block;*/
@@ -427,6 +426,13 @@ ul, li {
 	font-weight: 350;
 	max-width: 45vw;
 	word-break: keep-all;
+}
+
+.overlay_about a {
+	color: black;
+	text-decoration: none;
+	font-family: f-l;
+	font-feature-settings: "ss09"
 }
 
 
