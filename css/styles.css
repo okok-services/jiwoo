@@ -498,6 +498,7 @@ ul, li {
 	.rtl li img {
 		width: 7vw;
 		vertical-align: middle;
+		max-width: 41px;
 	}
 	.spacer_top {
 		display: none;
@@ -538,5 +539,8 @@ ul, li {
 	.rtl li {
 		font-size: 16px;
 		padding: 10px 20px;
+	}
+	.rtl li img {
+		max-width: none;
 	}
 }
