@@ -235,7 +235,7 @@ ul, li {
 }
 .spacer_top {
     display: inline-block;
-    height: 40px;
+    height: 45px;
     width: 50px;
 }
 
@@ -278,7 +278,7 @@ ul, li {
 	pointer-events: none;
 }
 .pagination {
-	font-family: 'f';
+	font-family: 'f-l';
 	font-weight: 350;
     position: absolute;
     bottom: 20px;
@@ -294,10 +294,10 @@ ul, li {
 	pointer-events: auto;
 }
 .close  {
-	font-size: 12px;
+	font-size: 16px;
 	top:19px;
 	right: 20px;
-	font-family: f;
+	font-family: f-L;
 	font-weight: 350;
 	position: fixed;
 	letter-spacing: 0.8px;
