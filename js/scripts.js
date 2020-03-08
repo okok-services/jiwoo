@@ -64,14 +64,14 @@
 			check_image_loaded('.rtl');
 		}
 
-		// if (i < data.length/2) {
+		if (i < data.length/2) {
 			// populate list
 			$('.overlay_menu ul').append('\
 				<li data-index="'+i+'">\
 					<span class="project_date">'+data[i].date+'</span><span class="project_title">'+data[i].title+'</span>\
 				</li>\
 			')			
-		// }
+		}
 
 	};
 
