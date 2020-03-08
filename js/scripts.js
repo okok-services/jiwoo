@@ -64,13 +64,15 @@
 			check_image_loaded('.rtl');
 		}
 
+		// if (i < data.length/2) {
+			// populate list
+			$('.overlay_menu ul').append('\
+				<li data-index="'+i+'">\
+					<span class="project_date">'+data[i].date+'</span><span class="project_title">'+data[i].title+'</span>\
+				</li>\
+			')			
+		// }
 
-		// populate list
-		$('.overlay_menu ul').append('\
-			<li data-index="'+i+'">\
-				<span class="project_date">'+data[i].date+'</span><span class="project_title">'+data[i].title+'</span>\
-			</li>\
-		')
 	};
 
 	////////////////
@@ -328,6 +330,12 @@
 	$(document).on('click','.menu_trigger',function(){
 		$('body').toggleClass('show_menu');
 		$('body').removeClass('show_about');
+
+		if ( $('body').hasClass('show_menu') ) {
+			$('.overlay_menu').scrollTop(0);
+			console.log('fired xx')
+		}
+		
 	});
 	$(document).on('click','.logo',function(){
 		$('body').toggleClass('show_about');
