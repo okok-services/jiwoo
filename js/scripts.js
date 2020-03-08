@@ -342,6 +342,14 @@
 		$('body').removeClass('show_menu');
 	});
 
+	$(document).on('mouseover','.logo',function(){
+		if (window.innerWidth > 1024) {
+			TweenMax.to(".li_0", 1, {y: 0});
+		}	
+	});
+
+	
+
 
 	//////////////// resize event
 
