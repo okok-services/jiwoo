@@ -450,6 +450,13 @@ ul, li {
 	em {
 		display: block;
 	}
+	.menu_trigger {
+		display: none;
+	}
+	.logo {
+		right: auto;
+		left: 5px;
+	}
 	.logo, .rtl li, .menu_trigger, .overlay_menu li, .close {
 		-webkit-tap-highlight-color: rgba(0, 0, 0, 0.04);
 		/*-webkit-tap-highlight-color: black;*/
@@ -460,7 +467,7 @@ ul, li {
 		user-select: none;
 	}
 	.top_bar {
-		height: 50px;
+		height: 80px;
 	}
 	.logo {
 		/*top:24px;*/
