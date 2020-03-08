@@ -40,7 +40,7 @@
 	//////////////// populate content at start
 	for (var i = 0; i < data.length; i++) {
 		
-		var content_to_append = (i+1)+' '+data[i].title+'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' 
+		var content_to_append = ' '+data[i].title+'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' 
 		// content_to_append = content_to_append.substr(0, 0)+ str.substr(index);
 
 		// count number of spaces
