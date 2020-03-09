@@ -39,11 +39,18 @@
 }
 */
 
-@font-face {
+/*@font-face {
    font-family: 'f-l';
    font-style: normal;
    font-weight: 350;
    src: url(fonts/favorit/FavoritHangulLining-Book.woff) format('woff');
+}*/
+
+@font-face {
+   font-family: 'f-l';
+   font-style: normal;
+   font-weight: 400;
+   src: url(fonts/favorit/Favorit-RegularLining-roman.woff) format('woff');
 }
 
 
@@ -182,7 +189,7 @@ ul, li {
 	z-index: 5;
 	cursor: pointer;
 	font-family: 'f-l';
-	font-weight: 350;
+	font-weight: 400;
 	/*font-feature-settings: "ss09";*/
 }
 
@@ -279,7 +286,7 @@ ul, li {
 }
 .pagination {
 	font-family: 'f-l';
-	font-weight: 350;
+	font-weight: 400;
     position: absolute;
     bottom: 20px;
     left: 50%;
@@ -297,8 +304,8 @@ ul, li {
 	font-size: 16px;
 	top:19px;
 	right: 20px;
-	font-family: f-L;
-	font-weight: 350;
+	font-family: f-l;
+	font-weight: 400;
 	position: fixed;
 	letter-spacing: 0.8px;
 	cursor: pointer;
