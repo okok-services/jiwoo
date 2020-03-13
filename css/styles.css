@@ -523,8 +523,8 @@ ul, li {
 		max-width: none;
 	}
 	.bg_color_content, .bg_color {
-		width: 110vw;
-		height: 110vw;
+		width: 125vw;
+		height: 125vw;
 	}
 	.bg_color {
 		top:50%;
