@@ -68,7 +68,7 @@
 			// populate list
 			$('.overlay_menu ul').append('\
 				<li data-index="'+i+'">\
-					<span class="project_date">'+data[i].date+'</span><span class="project_title">'+data[i].title+'</span>\
+					<span class="project_date">'+(i+1)+'</span><span class="project_title">'+data[i].title+'</span>\
 				</li>\
 			')			
 		}
