@@ -523,4 +523,7 @@ ul, li {
 		left: 50%;
 		transform: translate(-50%,-50%);
 	}
+	.bg_color_content {
+		background: radial-gradient(rgb(43, 43, 43) 0%, rgb(255, 255, 255, 0) 70%)
+	}
 }
