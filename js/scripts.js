@@ -64,7 +64,7 @@
 			check_image_loaded('.rtl');
 		}
 
-		if (i < data.length/2) {
+		if (i < data.length) {
 			// populate list
 			$('.overlay_menu ul').append('\
 				<li data-index="'+i+'">\
