@@ -91,7 +91,7 @@ ul, li {
 .preloader .loading_icon {
     min-width: 17px;
     margin-left: 10px;
-    animation: 1s load-spin linear infinite;
+    animation: 1s load-spin-logo linear infinite;
 }
 /*** MAIN STUFF ***/
 .bg_color {
@@ -304,6 +304,14 @@ ul, li {
 	}
 	100% {
 		transform:translate(-50%,-50%) rotate(359deg);
+	}
+}
+@keyframes load-spin-logo {
+	0% {
+		transform:rotate(0deg);
+	}
+	100% {
+		transform:rotate(359deg);
 	}
 }
 
