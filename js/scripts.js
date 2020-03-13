@@ -163,7 +163,7 @@
 		    	}
 
 				// when overlay images are all loading, fade in images and hide loading
-				// $('.overlay_content').addClass('loaded');
+				$('.overlay_content').addClass('loaded');
 		    }
 
 		  })
