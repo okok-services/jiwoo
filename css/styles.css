@@ -514,4 +514,8 @@ ul, li {
 	.rtl li img {
 		max-width: none;
 	}
+	.bg_color_content {
+		width: 110vw;
+		height: 110vw;
+	}
 }
