@@ -3,48 +3,12 @@
 
 
 
-
-/*@font-face {
-   font-family: 'a-sd';
-   font-style: normal;
-   font-weight: 400;
-   src: url(fonts/apple-sd.woff) format('woff');
-}
-
-@font-face {
-   font-family: 'gta';
-   font-style: normal;
-   font-weight: 400;
-   src: url(fonts/GT-America-Expanded-Regular.woff) format('woff');
-}*/
-
-/*@font-face {
-   font-family: 'f';
-   font-style: normal;
-   font-weight: 300;
-   src: url(fonts/favorit/FavoritHangul-Light.woff) format('woff');
-}*/
 @font-face {
    font-family: 'f';
    font-style: normal;
    font-weight: 350;
-   src: url(fonts/favorit/FavoritHangul-Book.woff) format('woff');
+   src: url(fonts/favorit/FavoritHangul-Book.woff2) format('woff2');
 }
-/*
-@font-face {
-   font-family: 'f';
-   font-style: normal;
-   font-weight: 400;
-   src: url(fonts/favorit/FavoritHangul-Regular.woff) format('woff');
-}
-*/
-
-/*@font-face {
-   font-family: 'f-l';
-   font-style: normal;
-   font-weight: 350;
-   src: url(fonts/favorit/FavoritHangulLining-Book.woff) format('woff');
-}*/
 
 @font-face {
    font-family: 'f-l';
