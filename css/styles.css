@@ -535,3 +535,8 @@ ul, li {
 		background: radial-gradient(rgb(43, 43, 43) 0%, rgb(255, 255, 255, 0) 70%)
 	}
 }
+@media (max-width: 420px) {
+	.overlay_about span {
+		padding: 67px 20px 0;
+	}
+}
