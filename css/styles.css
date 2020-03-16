@@ -86,7 +86,7 @@ ul, li {
 	max-width: 150px;
 	width: 81px;
 	position: relative;
-	top:1px;
+	top:-px;
 }
 .preloader .loading_icon {
     min-width: 17px;
